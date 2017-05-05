@@ -58,5 +58,8 @@ desired effect
     @include('layouts.partials.scripts')
 @show
 
+@section('sectionScripts')
+@show
+
 </body>
 </html>
