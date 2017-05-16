@@ -14,4 +14,9 @@ class Inmueble extends Modelo{
     );
 
     protected $hidden = array();
+
+    public function propietarios()
+    {
+        return $this->belongsToMany('App\Models\Propietario');
+    }
 }
