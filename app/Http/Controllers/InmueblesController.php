@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Redirect;
 use Input;
 use View;
 use App\Repository\InmueblesManager as InmueblesRepo;
-use Request;
 use App\Models\Inmueble;
+use Session;
+use Illuminate\Http\Request;
 
 class InmueblesController extends Controller
 {
@@ -24,9 +25,22 @@ class InmueblesController extends Controller
 
     public function listado()
     {
-        $response = $this->inmueblesrepo->index();
+
+        $response = [];
+
+        $response['inmuebles'] = [];
+        try {
+                $inmuebles = Inmueble::paginate(10);
+                $response['inmuebles'] = $inmuebles;
+
+
+        } catch (Exception $ex) {
+
+        }
 
         return View::make("inmuebles.listado")->with($response);
+
+
     }
 
     public function create(){
@@ -41,35 +55,16 @@ class InmueblesController extends Controller
     public function store(Request $request){
         
         //TODO : validation $this->validate($request, array());
+        $inmueble = $request->all();
 
-        $success = null;
+        $response = $this->inmueblesrepo->create($inmueble);
 
-        DB::beginTransaction();
-
-        try {
-            
-            DB::commit();
-
-            //TODO : relacionar con sync los propietarios(many to many)
-            $success = true;
-
-        } catch(Exception $ex) {
-            DB::rollback();
-
-            //TODO :log errors
-
-            $success = false;
-        }
-
-        if($success){
-
-        Session::flash('success', 'Inmueble guardado correctamente');
-        return Route::redirect("inmuebles.listado")->with($response)
-            ;
+        if($response){
+            Session::flash('success', 'Inmueble guardado correctamente');
+            return redirect()->route("inmuebles.listado");
         } else {
-        Session::flash('error', 'No se pudo guardar inmueble en DB');
-        return Route::redirect("inmuebles.listado")->with($response)
-            ;
+            Session::flash('error', 'No se pudo guardar inmueble en DB');
+            return redirect()->route("inmuebles.listado");
         }
         
     }

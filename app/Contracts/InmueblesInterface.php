@@ -9,7 +9,7 @@ interface InmueblesInterface
 
     public function show($id);
 
-	public function create(InmuebleModel $inmueble);
+	public function create(array $inmueble);
 
     public function update(InmuebleModel $inmueble);
 
