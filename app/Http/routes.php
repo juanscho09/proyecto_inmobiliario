@@ -49,6 +49,10 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'inmuebles.store',
         'uses' => 'InmueblesController@store'
     ));
+    Route::post('inmuebles/update', array(
+        'as' => 'inmuebles.update',
+        'uses' => 'InmueblesController@update'
+    ));
     // fin inmuebles
 
 });

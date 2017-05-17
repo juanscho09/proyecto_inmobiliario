@@ -42,7 +42,7 @@ class PersonasController extends Controller
         return View::make("personas.create")->with($response);
     }
 
-    public function store(){
+    public function store(){                                 
 
         DB::beginTransaction();
         try{

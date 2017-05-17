@@ -19,13 +19,14 @@
 @section('main-content')
    
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-xs-12">
                
     {{ Form::open( array('route'=>'inmuebles.store', 'method'=>'POST', 'onsubmit'=>'return setData();')) }}
         <div class="panel panel-default">
             <div class="panel-heading">
                 Crear Nuevo Inmueble
             </div>
+            <div class="panel-content">
             <fieldset>
             <legend style="padding-left: 25px;">Propietario del Inmueble</legend>
                 <div class="table-responsive">
@@ -52,7 +53,8 @@
                                     <select name="inmueble_propietario_2" id="inmueble_propietario_2" class="form-control">
                                         <option value="">Elegir un propietario</option>
                                             @foreach( $propietarios as $propietario )
-                                                <option value="{{ $propietario->id }}">{{ propietario->apellido . ', ' . $propietario->nombre }}
+                                                <option value="{{ $propietario->id }}">
+                                                {{ $propietario->apellido . ', ' . $propietario->nombre }}
                                                 </option>
                                             @endforeach
                                     </select>
@@ -326,17 +328,17 @@
                                 </table>
                             </div>
                         </fieldset>
+                    </div> 
                         <div class="panel-footer">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        {{ Form::submit('Guardar', ['class' => 'btn btn-success btn-block btn-sm']) }}
-                                    </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ Form::submit('Guardar', ['class' => 'btn btn-success btn-block btn-sm']) }}
+                                    {{ Form::close() }}
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
-                    {{ Form::close() }}
                 </div>
             </div>
         
