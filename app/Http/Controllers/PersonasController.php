@@ -78,4 +78,15 @@ class PersonasController extends Controller
         return Redirect::route('personas.listado', [$tipoPersona])->with($response);
     }
 
+    public function edit($id){
+        $response = [];
+
+
+        return View::make('personas.edit')->with($response);
+    }
+
+    public function update(){
+
+    }
+
 }
