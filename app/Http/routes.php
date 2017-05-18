@@ -34,6 +34,18 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'personas.store',
         'uses' => 'PersonasController@store'
     ));
+    Route::get('personas/edit/{tipoPersona?}/{id?}', array(
+        'as' => 'personas.edit',
+        'uses' => 'PersonasController@edit'
+    ));
+    Route::post('personas/update/{id}', array(
+        'as' => 'personas.update',
+        'uses' => 'PersonasController@update'
+    ));
+    Route::get('personas/{id}', array(
+        'as'=> 'personas.show',
+        'uses' =>'PersonasController@show'
+    ));
     // fin personas
 
     // inmuebles
@@ -59,7 +71,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'InmueblesController@update'
     ));
 
-    Route::get('inmuebles/{id}', array('as'=> 'inmuebles.show', 'uses' =>'InmueblesController@show'));
+    Route::get('inmuebles/{id}', array(
+        'as'=> 'inmuebles.show',
+        'uses' =>'InmueblesController@show'
+    ));
     // fin inmuebles
 
 });

@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Repository;
+
+use App\Contracts\PersonasInterface as IPersonas;
+use DB;
+
+
+class PersonasManager implements IPersonas
+{
+
+    public function all($columns = array('*'))
+    {
+        // TODO: Implement all() method.
+    }
+
+    public function paginate($perPage = 15, $columns = array('*'))
+    {
+        // TODO: Implement paginate() method.
+    }
+
+    public function create(array $data)
+    {
+        // TODO: Implement create() method.
+    }
+
+    public function update(array $data, $id)
+    {
+        // TODO: Implement update() method.
+    }
+
+    public function delete($id)
+    {
+        // TODO: Implement delete() method.
+    }
+
+    public function find($id, $columns = array('*'))
+    {
+        // TODO: Implement find() method.
+    }
+
+    public function findBy($field, $value, $columns = array('*'))
+    {
+        // TODO: Implement findBy() method.
+    }
+}
