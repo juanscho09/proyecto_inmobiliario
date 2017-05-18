@@ -28,7 +28,7 @@ class PersonasController extends Controller
 
         $response['tipoPersona'] = $tipoPersona;
 
-        return $this->personasrepo->
+        //return $this->personasrepo->
 
         $response['personas'] = [];
         try {
