@@ -100,7 +100,9 @@
                                                         <td>{{ isset($inmueble->tipo_inmueble) ? $inmueble->tipo_inmueble : '-' }}</td>
                                                         <td>
                                                             <a href="{{ route('inmuebles.show', $inmueble->id)}}" class="btn btn-default btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                      <a  href="{{ route('inmuebles.update')}}" class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+                                                            
+                      <a  href="{{ route('inmuebles.edit', $inmueble->id)}}" class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

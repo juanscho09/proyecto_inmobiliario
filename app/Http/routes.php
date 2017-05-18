@@ -49,7 +49,12 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'inmuebles.store',
         'uses' => 'InmueblesController@store'
     ));
-    Route::post('inmuebles/update', array(
+    Route::get('inmuebles/{id}/edit', array(
+        'as' => 'inmuebles.edit',
+        'uses' => 'InmueblesController@edit'
+    ));
+
+    Route::put('inmuebles/{id}', array(
         'as' => 'inmuebles.update',
         'uses' => 'InmueblesController@update'
     ));

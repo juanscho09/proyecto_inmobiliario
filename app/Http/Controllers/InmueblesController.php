@@ -74,26 +74,28 @@ class InmueblesController extends Controller
         
     }
 
-    public function edit(Request $request){
+    public function edit($id){
 
-        $propietarios = Propietario::all();
+        $response = [];
+        $response["inmueble"] = Inmueble::findOrFail($id);
 
         return view("inmuebles.edit")
-            ->withPropietarios($propietarios);
+                ->with($response);
     }
 
     public function update(Request $request, $id){
         
         //TODO : validation $this->validate($request, array());
-
+        
         $success = null;
 
         DB::beginTransaction();
 
         try {
-            $inmueble = Inmueble::find($id);
-            $inmueble->fill($request);
-                        
+
+            $inmueble = Inmueble::find($id)->first();
+            $inmueble->fill($request->all());
+            $inmueble->save(); 
             DB::commit();
 
             $success = true;
@@ -109,10 +111,10 @@ class InmueblesController extends Controller
         if($success){
 
             Session::flash('success', 'Inmueble actualizado correctamente');
-            return Route::redirect("inmuebles.listado")->with($response);
+            return redirect()->route("inmuebles.listado");
         } else {
             Session::flash('error', 'No se pudo actualizar inmueble en DB');
-            return Route::redirect("inmuebles.listado")->with($response);
+            return redirect()->route("inmuebles.listado");
         }
         
     }
