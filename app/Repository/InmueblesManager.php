@@ -11,9 +11,17 @@ class InmueblesManager implements InmueblesInt
 {
 	public function index()
 	{
-		$response = InmueblesInt::all();
+        $response = [];
+        try {
+
+            $response['inmuebles'] = InmuebleModel::paginate();
+
+        } catch (Exception $ex) {
+
+        }
 
         return $response;
+
 	}
 
     public function show($id)

@@ -26,20 +26,25 @@ class InmueblesController extends Controller
     public function listado()
     {
 
+        $response = $this->inmueblesrepo->index();
+        return View::make("inmuebles.listado")->with($response);
+
+    }
+
+    public function show($id)
+    {
         $response = [];
 
-        $response['inmuebles'] = [];
-        try {
-                $inmuebles = Inmueble::paginate(10);
-                $response['inmuebles'] = $inmuebles;
+        try{
+            $inmueble = Inmueble::find($id);
+            $response['inmueble'] = $inmueble;
 
 
         } catch (Exception $ex) {
 
         }
 
-        return View::make("inmuebles.listado")->with($response);
-
+        return view("inmuebles.show")->with($response);
 
     }
 
@@ -77,7 +82,7 @@ class InmueblesController extends Controller
             ->withPropietarios($propietarios);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $id){
         
         //TODO : validation $this->validate($request, array());
 

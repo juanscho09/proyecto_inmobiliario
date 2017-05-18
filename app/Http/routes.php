@@ -53,6 +53,8 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'inmuebles.update',
         'uses' => 'InmueblesController@update'
     ));
+
+    Route::get('inmuebles/{id}', array('as'=> 'inmuebles.show', 'uses' =>'InmueblesController@show'));
     // fin inmuebles
 
 });

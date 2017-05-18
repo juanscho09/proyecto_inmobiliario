@@ -77,9 +77,9 @@
                                 <tr>
                                     <th>Apellido y nombre</th>
                                     <th>Tipo y Nro Documento</th>
-                                    <th>CUIL/CUIT</th>
-                                    <th>IVA</th>
-                                    <th>Email</th>
+                                    <th>Localidad</th>
+                                    <th>Propietario</th>
+                                    <th>Tipo</th>
                                     <th>Acciones</th>
                                 </tr>
                                 </thead>
@@ -89,9 +89,9 @@
                                         <tr>
                                             <td>{{ $persona->apellido . ', ' . $persona->nombre }}</td>
                                             <td>{{ $persona->tipo_documento . ' - ' . $persona->nro_documento }}</td>
-                                            <td>{{ $persona->cuil_cuit }}</td>
-                                            <td>{{ $persona->condicion_iva }}</td>
-                                            <td>{{ $persona->email }}</td>
+                                            <td>{{ $persona->localidad }}</td>
+                                            <td>{{ $persona->propietario }}</td>
+                                            <td>{{ $persona->tipo_inmueble }}</td>
                                             <td></td>
                                         </tr>
                                     @endforeach

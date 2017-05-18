@@ -79,35 +79,48 @@
                                         <table class="table table-bordered table-hover">
                                             <thead>
                                             <tr>
-                                                <th>Apellido y nombre</th>
-                                                <th>Tipo y Nro Documento</th>
-                                                <th>CUIL/CUIT</th>
-                                                <th>IVA</th>
-                                                <th>Email</th>
+                                                <th>ID</th>
+                                                <th>Dirección</th>
+                                                <th>Piso/Depto</th>
+                                                <th>Localidad</th>
+                                                <th>Propietario</th>
+                                                <th>Tipo</th>
                                                 <th>Acciones</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @if(0 != 0)
+                                            @if($inmuebles)
                                                 @foreach ($inmuebles as $inmueble)
                                                     <tr>
-                                                        <td>{{ $inmueble->apellido . ', ' . $inmueble->nombre }}</td>
-                                                        <td>{{ $inmueble->tipo_documento . ' - ' . $inmueble->nro_documento }}</td>
-                                                        <td>{{ $inmueble->cuil_cuit }}</td>
-                                                        <td>{{ $inmueble->condicion_iva }}</td>
-                                                        <td>{{ $inmueble->email }}</td>
-                                                        <td></td>
+                                                        <th>{{ $inmueble->id }}</th>
+                                                        <td>{{ $inmueble->calle . ' ' . $inmueble->numero }}</td>
+                                                        <td>{{ $inmueble->piso . ' - ' . $inmueble->depto }}</td>
+                                                        <td>{{ isset($inmueble->localidad) ? $inmueble->localidad : '-' }}</td>
+                                                        <td>{{ isset($inmueble->propietario) ? $inmueble->propietario  : '-' }}</td>
+                                                        <td>{{ isset($inmueble->tipo_inmueble) ? $inmueble->tipo_inmueble : '-' }}</td>
+                                                        <td>
+                                                            <a href="{{ route('inmuebles.show', $inmueble->id)}}" class="btn btn-default btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                      <a  href="{{ route('inmuebles.update')}}" class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             @else
                                                 <tr>
-                                                    <td colspan="6" class="text-center">No hay inmuebles registrados</td>
+                                                    <td colspan="6" class="text-center">
+                                                        No hay inmuebles registrados
+                                                    </td>
                                                 </tr>
                                             @endif
                                             </tbody>
                                         </table>
-                                    </div>                                  
-
+                                        @if($inmuebles->links())
+                                        <div class="well">
+                                          <div class="text-center">
+                                            {!! $inmuebles->links(); !!}
+                                          </div>
+                                        </div>                
+                                        @endif                
+                                    </div>
                                 </div>
                             </div>
                         
