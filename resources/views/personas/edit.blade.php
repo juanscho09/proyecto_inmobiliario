@@ -29,7 +29,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    {{ Form::open( array('route'=>'personas.store', 'method'=>'POST', 'onsubmit'=>'return setData();')) }}
+                    {{ Form::model($persona, array('route'=>['personas.update',$persona->id], 'method'=>'POST')) }}
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Crear Nuevo

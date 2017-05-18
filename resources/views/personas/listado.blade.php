@@ -92,7 +92,10 @@
                                             <td>{{ $persona->localidad }}</td>
                                             <td>{{ $persona->propietario }}</td>
                                             <td>{{ $persona->tipo_inmueble }}</td>
-                                            <td></td>
+                                            <td>
+                                                <a href="{{ route('personas.show', $persona->id)}}" class="btn btn-default btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a  href="{{ route('personas.edit', ['tipoPersona'=>$tipoPersona,'id'=>$persona->id])}}" class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 @else
