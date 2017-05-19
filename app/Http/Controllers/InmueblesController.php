@@ -121,7 +121,7 @@ class InmueblesController extends Controller
 
     public function delete($id)
     {
-        DB::transaction();
+        DB::begintransaction();
 
         try{
             $inmueble = Inmueble::findOrFail($id);
@@ -129,8 +129,7 @@ class InmueblesController extends Controller
             //TODO : ver relaciones al eliminar inmueble(desincronizar etc)
             DB::commit();
             $success = true;
-        }
-        catch(Exception $ex){
+        }catch(Exception $ex){
             // TODO : log 
             DB::rollback();
             $success = false;
@@ -138,10 +137,10 @@ class InmueblesController extends Controller
 
         if($success){
             Session::flash('success', 'Inmueble eliminado correctamente');
-            return Route::redirect("inmuebles.listado")->with($response);
+            return redirect()->route("inmuebles.listado");
         } else {
             Session::flash('error', 'No se pudo eliminar inmueble en DB');
-            return Route::redirect("inmuebles.listado")->with($response);
+            return redirect()->route("inmuebles.listado");
         }
     }
 }

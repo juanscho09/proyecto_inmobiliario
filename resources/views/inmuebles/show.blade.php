@@ -128,10 +128,9 @@
                                       <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cerrar</button>
                                     </div>
                                     <div class="col-xs-6">
-                                      {!! Form::open(['route' => ['inmuebles.destroy', $inmueble->id], 'method' => 'DELETE']) !!}
-                                    {{ Form::button('Eliminar', array('class'=>'btn btn-danger btn-block', 'type'=>'submit')) }}
+                                  {!! Form::open(['route' => ['inmuebles.destroy', $inmueble->id], 'method' => 'DELETE']) !!}
+                                    {{ Form::button('Eliminar', array('class'=>'btn btn-danger btn-block', 'type'=>'submit'))}}
                                   {!! Form::close() !!}
-
                                     </div>
                                   </div>
                                 </div>
