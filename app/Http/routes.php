@@ -75,6 +75,11 @@ Route::group(['middleware' => 'web'], function () {
         'as'=> 'inmuebles.show',
         'uses' =>'InmueblesController@show'
     ));
+
+    Route::delete('inmuebles/{id}', array(
+        'as'=> 'inmuebles.destroy',
+        'uses' =>'InmueblesController@delete'
+    ));
     // fin inmuebles
 
 });
