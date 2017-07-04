@@ -17,40 +17,25 @@ class PersonasController extends Controller
 {
 
     protected $personasrepo;
+    protected $response;
 
     public function __construct(RepPersonas $repPersonas){
+        $this->response = [];
         $this->personasrepo = $repPersonas;
     }
 
     public function  listado($tipoPersona)
     {
-        $response = [];
-
-        $response['tipoPersona'] = $tipoPersona;
-
-        //return $this->personasrepo->
-
-        $response['personas'] = [];
-        try {
-            $instanciaTipoPersona = instanciaTipoPersona($tipoPersona);
-
-            if ($instanciaTipoPersona != '') {
-                $personas = $instanciaTipoPersona->query()->paginate(10);
-                $response['personas'] = $personas;
-            }
-        } catch (Exception $ex) {
-
-        }
-
-        return View::make("personas.listado")->with($response);
+        $this->personasrepo = setModelTipoPersona($this->personasrepo, $tipoPersona);
+        $this->response['tipoPersona'] = $tipoPersona;
+        $this->response['personas'] = $this->personasrepo->paginate(10);
+        return View::make("personas.listado")->with($this->response);
+        //return view("personas.listado")->with($this->response);
     }
 
     public function create($tipoPersona){
-
-        $response = [];
-
-        $response['tipoPersona'] = $tipoPersona;
-        return View::make("personas.create")->with($response);
+        $this->response['tipoPersona'] = $tipoPersona;
+        return View::make("personas.create")->with($this->response);
     }
 
     public function store(){                                 
@@ -90,24 +75,15 @@ class PersonasController extends Controller
     }
 
     public function edit($tipoPersona,$id){
-        $response = [];
-
-        $response['tipoPersona'] = $tipoPersona;
-
-        $instanciaTipoPersona = instanciaTipoPersona($tipoPersona);
-
-        $response['persona'] = $instanciaTipoPersona->find($id);
-        return View::make('personas.edit')->with($response);
+        $this->personasrepo = setModelTipoPersona($this->personasrepo, $tipoPersona);
+        $this->response['tipoPersona'] = $tipoPersona;
+        $this->response['persona'] = $this->personasrepo->find($id);
+        return View::make('personas.edit')->with($this->response);
     }
 
     public function update(Request $request, $id){
-
-
-        $instanciaTipoPersona = instanciaTipoPersona($request->tipoPersona);
-
-        $persona = $instanciaTipoPersona->find($id);
-        $persona->fill($request->all());
-        $persona->save();
+        $this->personasrepo = setModelTipoPersona($this->personasrepo, $request->tipoPersona);
+        $guardado = $this->personasrepo->updateRich($request->all(), $id);
 
         return Redirect::route('personas.listado', [$request->tipoPersona]);
     }

@@ -2,14 +2,26 @@
 
 namespace App\Repository;
 
-use App\Contracts\PersonasInterface as IPersonas;
-use DB;
+use Bosnadev\Repositories\Contracts\RepositoryInterface;
+use Bosnadev\Repositories\Eloquent\Repository;
 
 
-class PersonasManager implements IPersonas
+
+class PersonasManager extends Repository
 {
 
-    public function all($columns = array('*'))
+    /**
+     * Specify Model class name
+     *
+     * @return mixed
+     */
+    public function model()
+    {
+        // por defecto trae el Inquilino
+        return "App\\Models\\Inquilino";
+    }
+
+    /*public function all($columns = array('*'))
     {
         // TODO: Implement all() method.
     }
@@ -42,5 +54,5 @@ class PersonasManager implements IPersonas
     public function findBy($field, $value, $columns = array('*'))
     {
         // TODO: Implement findBy() method.
-    }
+    }*/
 }
