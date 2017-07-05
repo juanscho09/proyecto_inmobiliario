@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a97ce75e-089f-46b2-a76c-ab5548050db2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonasController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonasController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Repository/PersonasManager.php" afterPath="$PROJECT_DIR$/app/Repository/PersonasManager.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2017_05_16_045303_create_inmueble_propietario_table.php" afterPath="$PROJECT_DIR$/database/migrations/2017_05_16_045303_create_inmueble_propietario_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/personas/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/personas/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/personas/listado.blade.php" afterPath="$PROJECT_DIR$/resources/views/personas/listado.blade.php" />
-    </list>
+    <list default="true" id="a97ce75e-089f-46b2-a76c-ab5548050db2" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Modelo.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Modelo.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Models/Modelo.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
@@ -96,7 +89,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -587,12 +580,12 @@
       <workItem from="1497504266704" duration="12000" />
       <workItem from="1499207346196" duration="73000" />
       <workItem from="1499208310636" duration="139000" />
-      <workItem from="1499239165807" duration="795000" />
+      <workItem from="1499239165807" duration="796000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150154000" />
+    <option name="totallyTimeSpent" value="150155000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -946,16 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Modelo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#30#37#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Garante.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1017,6 +1000,16 @@
         <state relative-caret-position="105">
           <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Modelo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#30#37#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
