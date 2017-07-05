@@ -587,12 +587,12 @@
       <workItem from="1497504266704" duration="12000" />
       <workItem from="1499207346196" duration="73000" />
       <workItem from="1499208310636" duration="139000" />
-      <workItem from="1499239165807" duration="208000" />
+      <workItem from="1499239165807" duration="795000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149567000" />
+    <option name="totallyTimeSpent" value="150154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -631,7 +631,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/PersonasController.php</url>
-          <line>42</line>
+          <line>49</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -641,12 +641,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/PersonasController.php</url>
-          <line>51</line>
+          <line>60</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/PersonasController.php</url>
-          <line>94</line>
+          <line>108</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -931,7 +931,7 @@
         <state relative-caret-position="273">
           <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
           <folding>
-            <element signature="e#1192#2687#0#PHP" expanded="false" />
+            <element signature="e#1524#3106#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
