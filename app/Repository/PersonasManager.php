@@ -5,8 +5,6 @@ namespace App\Repository;
 use Bosnadev\Repositories\Contracts\RepositoryInterface;
 use Bosnadev\Repositories\Eloquent\Repository;
 
-
-
 class PersonasManager extends Repository
 {
 

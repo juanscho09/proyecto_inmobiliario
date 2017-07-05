@@ -13,6 +13,7 @@ class CreateInmueblePropietarioTable extends Migration
     public function up()
     {
         Schema::create('inmueble_propietario', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('inmueble_id')->unsigned();
             $table->foreign('inmueble_id')->references('id')->on('inmuebles');

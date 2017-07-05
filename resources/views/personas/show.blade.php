@@ -5,7 +5,7 @@
 @endsection
 
 @section('contentheader_title')
-    (PERSONA-CAMBIAR)
+    {{ ucwords($tipoPersona) }}
 @endsection
 
 @section('contentheader_description')
@@ -24,7 +24,7 @@
     
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3> <small> Direccion:</small></h3>
+                <h3> <small> {{$persona}}:</small></h3>
             </div>
             <div class="panel-content">
             

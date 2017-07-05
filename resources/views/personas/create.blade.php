@@ -455,11 +455,9 @@
                             </fieldset>
                         {{ Form::hidden('tipoPersona', $tipoPersona) }}
                         <div class="panel-footer">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        {{ Form::submit('Guardar', ['class' => 'btn btn-success btn-block btn-sm']) }}
-                                    </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ Form::submit('Guardar', ['class' => 'btn btn-success btn-block btn-sm']) }}
                                 </div>
                             </div>
                         </div>

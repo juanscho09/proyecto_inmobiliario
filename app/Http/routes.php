@@ -42,7 +42,7 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'personas.update',
         'uses' => 'PersonasController@update'
     ));
-    Route::get('personas/{id}', array(
+    Route::get('personas/{tipoPersona?}/{id}', array(
         'as'=> 'personas.show',
         'uses' =>'PersonasController@show'
     ));
