@@ -12,7 +12,7 @@
 
 @endsection
 
-@section('nav_main_inmuebles')
+@section('nav_main_personas')
     <li class="active">
 @endsection
 
