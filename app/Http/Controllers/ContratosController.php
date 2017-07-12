@@ -16,7 +16,7 @@ class ContratosController extends Controller
 
     public function index()
     {
-    	$contratos = Contrato::all();
+    	$contratos = Contrato::paginate(10);
 
     	return view('contratos.listado', compact('contratos'));
     }

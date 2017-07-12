@@ -24,22 +24,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Inmuebles registrados
-                             @if (Session::has('success'))
-                                   <div class="alert alert-success" role="alert">
-                                      <strong>Perfecto!</strong> {{ Session::get('success') }}
-                                    </div>
-
-                            @endif
-                            @if (count($errors) > 0)
-                                    <div class="alert alert-danger" role="alert">
-                                      <strong>Errores:</strong>
-                                      <ul>
-                                      @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                      @endforeach  
-                                      </ul>
-                                    </div>
-                            @endif
+                             @include('partials._messages')
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -66,7 +51,7 @@
                                     <div class="form-group">
                                         <label for="">Nuevo inmueble</label>
                                         <a href="{{URL::route('inmuebles.create')}}">
-                                            <button class="btn btn-success btn-block" data-toggle="tooltip"     data-placement="top" title="Nuevo registro">
+                                            <button class="btn btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Nuevo registro">
                                                 <i class="fa fa-plus"></i>
                                            </button>
                                         </a>

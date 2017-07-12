@@ -18,7 +18,7 @@ class CreateMovimientosTable extends Migration
             $table->integer('monto');
             $table->dateTime('fecha_movimiento');
             $table->integer('tipo_movimiento_id')->unsigned();
-            $table->foreign('tipo_movimiento_id')->references('id')->on('movimientos');
+            $table->foreign('tipo_movimiento_id')->references('id')->on('tipo_movimientos');
             $table->json('persona')->nullable();
             $table->timestamps();
             $table->softDeletes();

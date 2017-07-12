@@ -16,8 +16,9 @@ class MovimientosController extends Controller
 
     public function index()
     {
-    	$movimientos = Movimiento::all();
+    	$movimientos = Movimiento::paginate(10);
 
-    	return view('movimientos.listado', compact('movimientos'));
+    	return view('movimientos.listado', 
+    		   				compact('movimientos'));
     }
 }
