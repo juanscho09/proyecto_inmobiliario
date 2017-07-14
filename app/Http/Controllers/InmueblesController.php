@@ -17,17 +17,19 @@ use Illuminate\Http\Request;
 class InmueblesController extends Controller
 {
     protected $inmueblesrepo;
+    protected $response;
 
     public function __construct(InmueblesRepo $inmueblesrepo)
     {
+        $this->response = [];
         $this->inmueblesrepo = $inmueblesrepo;
     }
 
     public function listado()
     {
 
-        $response = $this->inmueblesrepo->index();
-        return View::make("inmuebles.listado")->with($response);
+        $this->response['inmuebles'] = $this->inmueblesrepo->paginate(10);
+        return View::make("inmuebles.listado")->with($this->response);
 
     }
 
@@ -49,12 +51,15 @@ class InmueblesController extends Controller
     }
 
     public function create(){
+        return View::make("inmuebles.create")->with();
+
+/*
         $response = [];
 
         $propietarios = Propietario::all();
 
         $response['propietarios'] = $propietarios;
-        return View::make("inmuebles.create")->with($response);
+        return View::make("inmuebles.create")->with($response);*/
     }
 
     public function store(Request $request){

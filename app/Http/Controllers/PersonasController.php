@@ -44,7 +44,7 @@ class PersonasController extends Controller
         try{
             $datos_persona = Input::get();
             $tipoPersona = Input::get('tipoPersona','');
-            $instanciaTipoPersona = instanciaTipoPersona($tipoPersona);
+            $instanciaTipoPersona = setModelTipoPersona($tipoPersona);
 
             if( $instanciaTipoPersona != '' ){
                 $instanciaTipoPersona->fill($datos_persona);

@@ -2,67 +2,22 @@
 
 namespace App\Repository;
 
-use App\Contracts\InmueblesInterface as InmueblesInt;
-use App\Models\Inmueble as InmuebleModel;
-use DB;
+use Bosnadev\Repositories\Contracts\RepositoryInterface;
+use Bosnadev\Repositories\Eloquent\Repository;
 
 
-class InmueblesManager implements InmueblesInt
+
+class InmueblesManager extends Repository
 {
-	public function index()
-	{
-        $response = [];
-        try {
 
-            $response['inmuebles'] = InmuebleModel::paginate();
-
-        } catch (Exception $ex) {
-
-        }
-
-        return $response;
-
-	}
-
-    public function show($id)
+    /**
+     * Specify Model class name
+     *
+     * @return mixed
+     */
+    public function model()
     {
-
-    }
-
-	public function create(array $data)
-	{
-        $success = null;
-
-        DB::beginTransaction();
-
-        try {
-            $inmueble = new InmuebleModel;
-            $inmueble->fill($data);
-            $inmueble->save();
-            DB::commit();
-
-            //TODO : relacionar con sync los propietarios(many to many)
-            $success = true;
-
-        } catch(Exception $ex) {
-            DB::rollback();
-
-            //TODO :log errors
-
-            $success = false;
-        }
-
-        return $success;
-
-	}
-
-    public function update(InmuebleModel $inmueble)
-    {
-
-    }
-
-    public function delete(InmuebleModel $inmueble)
-    {
-
+        // TODO: Implement model() method.
+        return "App\\Models\\Inmueble";
     }
 }
