@@ -24,18 +24,34 @@ class PersonasController extends Controller
         $this->personasrepo = $repPersonas;
     }
 
-    public function  listado($tipoPersona)
+    public function listado($tipoPersona)
     {
         $this->personasrepo = setModelTipoPersona($this->personasrepo, $tipoPersona);
         $this->response['tipoPersona'] = $tipoPersona;
         $this->response['personas'] = $this->personasrepo->paginate(10);
-        return View::make("personas.listado")->with($this->response);
-        //return view("personas.listado")->with($this->response);
+        
+        return view("personas.listado")
+                    ->with($this->response);
+        //
+                    return view("personas.listado")
+                    ->with($this->response);
+    }
+
+    public function show($tipoPersona, $id){
+
+        $this->personasrepo = setModelTipoPersona($this->personasrepo, $tipoPersona);
+        $this->response['tipoPersona'] = $tipoPersona;
+        $this->response['persona'] = $this->personasrepo->find($id);
+        
+        return view('personas.show')
+                    ->with($this->response);
     }
 
     public function create($tipoPersona){
         $this->response['tipoPersona'] = $tipoPersona;
-        return View::make("personas.create")->with($this->response);
+        
+        return view("personas.create")
+                    ->with($this->response);
     }
 
     public function store(){                                 
@@ -49,7 +65,9 @@ class PersonasController extends Controller
             if( $instanciaTipoPersona != '' ){
                 $instanciaTipoPersona->fill($datos_persona);
                 if( !$instanciaTipoPersona->validate(true) ){
-                    return Redirect::back()->withErrors($instanciaTipoPersona->errors)->withInput();
+                    return Redirect::back()
+                                ->withErrors($instanciaTipoPersona->errors)
+                                ->withInput();
                 }
                 if( $instanciaTipoPersona->save() ){
                     DB::commit();
@@ -71,14 +89,17 @@ class PersonasController extends Controller
             $response['error']      =   true;
         }
 
-        return Redirect::route('personas.listado', [$tipoPersona])->with($response);
+        return Redirect::route('personas.listado', [$tipoPersona])
+                    ->with($response);
     }
 
     public function edit($tipoPersona,$id){
         $this->personasrepo = setModelTipoPersona($this->personasrepo, $tipoPersona);
         $this->response['tipoPersona'] = $tipoPersona;
         $this->response['persona'] = $this->personasrepo->find($id);
-        return View::make('personas.edit')->with($this->response);
+        
+        return view('personas.edit')
+                    ->with($this->response);
     }
 
     public function update(Request $request, $id){
@@ -88,8 +109,6 @@ class PersonasController extends Controller
         return Redirect::route('personas.listado', [$request->tipoPersona]);
     }
 
-    public function show(){
-        return View::make('personas.show');
-    }
+    
 
 }

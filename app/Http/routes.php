@@ -42,7 +42,7 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'personas.update',
         'uses' => 'PersonasController@update'
     ));
-    Route::get('personas/{id}', array(
+    Route::get('personas/{tipoPersona?}/{id}', array(
         'as'=> 'personas.show',
         'uses' =>'PersonasController@show'
     ));
@@ -81,5 +81,22 @@ Route::group(['middleware' => 'web'], function () {
         'uses' =>'InmueblesController@delete'
     ));
     // fin inmuebles
+
+    Route::group(['prefix' => 'movimientos'], function() {
+        
+        Route::get('listado', [
+                'as' => 'movimientos.listado', 
+                'uses' => 'MovimientosController@index'
+            ]);
+
+    });
+
+    Route::group(['prefix' => 'contratos'], function() {
+
+        Route::get('listado', [            
+                'as' => 'contratos.listado', 
+                'uses' => 'ContratosController@index'
+            ]);
+    });
 
 });

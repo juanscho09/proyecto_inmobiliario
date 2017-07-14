@@ -39,5 +39,10 @@ class Inquilino extends Modelo
     );
 
     protected $hidden = array();
+
+    public function inmueble()
+    {
+        return $this->hasOne(Inmueble::class);
+    }
 }
 

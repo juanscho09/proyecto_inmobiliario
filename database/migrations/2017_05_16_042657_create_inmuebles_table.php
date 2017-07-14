@@ -13,7 +13,7 @@ class CreateInmueblesTable extends Migration
     public function up()
     {
         Schema::create('inmuebles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('tipo_inmueble');
             $table->string('observacion', 600);
             $table->string('calle');
@@ -37,6 +37,8 @@ class CreateInmueblesTable extends Migration
             $table->string('encargado_tel_3');
             $table->string('estado_id')->nullable();
             $table->timestamps('');
+            $table->softDeletes();
+            $table->engine = 'InnoDB';
         });
     }
 

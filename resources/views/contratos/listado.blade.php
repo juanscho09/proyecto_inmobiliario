@@ -1,40 +1,47 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-    Listado
+    Contratos
 @endsection
 
 @section('contentheader_title')
-    Inmuebles
+    Contratos
 @endsection
 
 @section('contentheader_description')
-
+    Listado de contratos
 @endsection
 
-@section('nav_main_inmuebles')
+@section('nav_contratos')
+    <li class="active treeview">
+@endsection
+
+@section('item_contratos')
     <li class="active">
 @endsection
 
-@section('main-content')
+@section("sectionScripts")
+
+@endsection
+
+@section("main-content")
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Inmuebles registrados
-                             @include('partials._messages')
+                            Contratos registrados
+                            @include('partials._messages')
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-8">
-                                    {{ Form::open( array('route'=> 'inmuebles.listado' , 'method'=>'get', 'onsubmit'=>'return true;', "style" => "margin:0px;")) }}
+                                    {{ Form::open( array('route'=> 'contratos.listado' , 'method'=>'get', 'onsubmit'=>'return true;', "style" => "margin:0px;")) }}
 
                                     <div class="form-group">
                                             
                                     {{ Form::label('', 'Filtrar Listado', array("for"=>"btnFiltrarListado") ) }}
-
                                         {{                                                 Form::submit('Filtrar Listado',
                                                         array(
                                                             "id" => "btnFiltrarListado",
@@ -49,9 +56,9 @@
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
-                                        <label for="">Nuevo inmueble</label>
-                                        <a href="{{URL::route('inmuebles.create')}}">
-                                            <button class="btn btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Nuevo registro">
+                                        <label for="">Nuevo Contrato</label>
+                                        <a href="{{URL::route('contratos.create')}}">
+                                            <button class="btn btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Nuevo contrato">
                                                 <i class="fa fa-plus"></i>
                                            </button>
                                         </a>
@@ -65,62 +72,63 @@
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Dirección</th>
-                                                <th>Piso/Depto</th>
-                                                <th>Localidad</th>
+                                                <th>Fecha Inicio</th>
+                                                <th>Fecha exp.</th>
+                                                <th>Dirección inmueble</th>
                                                 <th>Propietario</th>
-                                                <th>Tipo</th>
+                                                <th>Inquilinos</th>
+                                                <th>Monto actual</th>
                                                 <th>Acciones</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @if($inmuebles)
-                                                @foreach ($inmuebles as $inmueble)
+                                            @if($contratos)
+                                                @foreach ($contratos as $contrato)
                                                     <tr>
-                                                        <th>{{ $inmueble->id }}</th>
-                                                        <td>{{ $inmueble->calle . ' ' . $inmueble->numero }}</td>
-                                                        <td>{{ $inmueble->piso . ' - ' . $inmueble->depto }}</td>
-                                                        <td>{{ isset($inmueble->localidad) ? $inmueble->localidad : '-' }}</td>
-                                                        <td>{{ isset($inmueble->propietario) ? $inmueble->propietario  : '-' }}</td>
-                                                        <td>{{ isset($inmueble->tipo_inmueble) ? $inmueble->tipo_inmueble : '-' }}</td>
+                                                        <th>{{ $contrato->id }}</th>
+                                                        <td>{{ $contrato->calle . ' ' . $contrato->fecha_inicio }}</td>
+                                                        <td>{{ $contrato->fecha_expiracion }}</td>
+                                                        <td>{{ $contrato->inmueble->direccion }}</td>
+                                                        <td>{{ $contrato->inmueble->propietario->nombre }}</td>
                                                         <td>
-                                                            <a href="{{ route('inmuebles.show', $inmueble->id)}}" class="btn btn-default btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
-
+                                                            @foreach($contrato->inquilinos as $inquilino)
                                                             
-                      <a  href="{{ route('inmuebles.edit', $inmueble->id)}}" class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                            {{ $inquilino->nombre }}
+
+                                                            @endforeach
+                                                        </td>
+                                                        <td>
+                                                            {{ $contrato->monto_primer_año }}
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('contratos.show', $contrato->id)}}" class="btn btn-default btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
+                      <a  href="{{ route('contratos.edit', $contrato->id)}}" class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
                                             @else
                                                 <tr>
                                                     <td colspan="6" class="text-center">
-                                                        No hay inmuebles registrados
+                                                        No hay contratos registrados
                                                     </td>
                                                 </tr>
                                             @endif
                                             </tbody>
                                         </table>
-                                        @if($inmuebles->links())
+                                        @if($contratos->links())
                                         <div class="well">
                                           <div class="text-center">
-                                            {!! $inmuebles->links(); !!}
+                                            {!! $contratos->links(); !!}
                                           </div>
                                         </div>                
                                         @endif                
                                     </div>
                                 </div>
                             </div>
-                        
                         </div>
                         <div class="panel-footer">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-3">
-
-                                    </div>
-
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
