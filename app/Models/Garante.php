@@ -39,5 +39,10 @@ class Garante extends Modelo
     );
 
     protected $hidden = array();
+
+    public function contratos()
+    {
+        return $this->belongsToMany(Contrato::Class);
+    }
 }
 

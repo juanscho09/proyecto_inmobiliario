@@ -41,5 +41,10 @@ class Propietario extends Modelo
     );
 
     protected $hidden = array();
+
+    public function inmuebles()
+    {
+        return $this->belongsToMany(Inmueble::class);
+    }
 }
 

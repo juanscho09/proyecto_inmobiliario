@@ -1,23 +1,20 @@
 <?php
 
-use \App\Models\Propietario;
-use \App\Models\Inquilino;
-use \App\Models\Garante;
 
-function instanciaTipoPersona($tipoPersona){
+function setModelTipoPersona($repoPersona, $tipoPersona){
     switch($tipoPersona){
         case 'propietarios':
-            $tipo_persona = new Propietario();
+            $repoPersona->setModel("App\\Models\\Propietario");
             break;
-        case 'inquilinos':
-            $tipo_persona = new Inquilino();
+        case 'inquilinos': //Inquilino es el modelo por defecto
+            $repoPersona;
             break;
         case 'garantes':
-            $tipo_persona = new Garante();
+            $repoPersona->setModel("App\\Models\\Garante");
             break;
         default:
-            $tipo_persona = '';
+            $repoPersona;
             break;
     }
-    return $tipo_persona;
+    return $repoPersona;
 }
