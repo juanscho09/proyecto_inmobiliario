@@ -12,7 +12,7 @@
     Parámetros globales del sistema
 @endsection
 
-@section('nav_main_inmuebles')
+@section('nav_main_configuracion')
     <li class="active">
 @endsection
 
@@ -22,7 +22,7 @@
         <div class="col-xs-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                                   
+                    Configuracion General   
                 </div>
                 <div class="box-body">
                     

@@ -97,6 +97,16 @@ Route::group(['middleware' => 'web'], function () {
                 'as' => 'contratos.listado', 
                 'uses' => 'ContratosController@index'
             ]);
+
+    });
+
+    Route::group(['prefix' => 'configuracion'], function() {
+
+        Route::get('listado', [            
+                'as' => 'configuracion.listado', 
+                'uses' => 'ConfiguracionController@index'
+            ]);
+
     });
 
 });
