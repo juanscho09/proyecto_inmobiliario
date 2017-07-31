@@ -19,15 +19,14 @@
 @section('main-content')
    
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
                     Configuracion General   
                 </div>
                 <div class="box-body">
                     
-                </div>    
-                
+                </div>
             </div>
         </div>
     </div>
@@ -41,4 +40,8 @@
             margin-bottom: 10px;
         }
     </style>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 @endsection

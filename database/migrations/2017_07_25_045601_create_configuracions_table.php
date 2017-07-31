@@ -14,7 +14,11 @@ class CreateConfiguracionsTable extends Migration
     {
         Schema::create('configuraciones', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->string('titulo');
+            $table->text('descripcion');
+            $table->string('text-value');
+            $table->boolean('estado');
+            $table->enum('type',['input','checkbox']);
             $table->timestamps();
         });
     }
