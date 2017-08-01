@@ -3,16 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Configuracion;
+use App\Models\ConfigGeneral;
+use App\Models\ConfigServicio;
 use App\Http\Requests;
 
 class ConfiguracionController extends Controller
 {
-    public function index()
+    public function generales()
     {
-        $configuraciones = Configuracion::all();
+        $generales = ConfigGeneral::all();
 
-    	return view('configuracion.listado',
-                    compact('configuraciones'));
+    	return view('configuracion.generales',
+                        compact('generales'));
+    }
+
+    public function servicios()
+    {
+        $servicios = ConfigServicio::all();
+
+        return view('configuracion.servicios',
+                        compact('servicios'));
+    }
+
+    public function updateGenerales($id)
+    {
+
+    }
+
+    public function updateServicios($id)
+    {
+
     }
 }

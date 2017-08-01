@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConfiguracionsTable extends Migration
+class CreateConfiguracionesServiciosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreateConfiguracionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configuraciones', function (Blueprint $table) {
+        Schema::create('configuraciones_servicios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
             $table->text('descripcion');
-            $table->string('text-value');
-            $table->boolean('estado');
-            $table->enum('type',['input','checkbox']);
+            $table->string('valor', 50);
+            $table->integer('plazo_pago')->default(1);
+            $table->boolean('estado')->default(1);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateConfiguracionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('configuracions');
+        Schema::drop('configuraciones_servicios');
     }
 }
