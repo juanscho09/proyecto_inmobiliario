@@ -51,15 +51,15 @@ class InmueblesController extends Controller
     }
 
     public function create(){
-        return View::make("inmuebles.create")->with();
+        //return view("inmuebles.create")->with();
 
-/*
+
         $response = [];
 
         $propietarios = Propietario::all();
 
         $response['propietarios'] = $propietarios;
-        return View::make("inmuebles.create")->with($response);*/
+        return view("inmuebles.create")->with($response);
     }
 
     public function store(Request $request){

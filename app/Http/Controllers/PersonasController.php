@@ -30,11 +30,7 @@ class PersonasController extends Controller
         $this->response['tipoPersona'] = $tipoPersona;
         $this->response['personas'] = $this->personasrepo->paginate(10);
         
-        return view("personas.listado")
-                    ->with($this->response);
-        //
-                    return view("personas.listado")
-                    ->with($this->response);
+        return view("personas.listado")->with($this->response);
     }
 
     public function show($tipoPersona, $id){
@@ -43,15 +39,13 @@ class PersonasController extends Controller
         $this->response['tipoPersona'] = $tipoPersona;
         $this->response['persona'] = $this->personasrepo->find($id);
         
-        return view('personas.show')
-                    ->with($this->response);
+        return view('personas.show')->with($this->response);
     }
 
     public function create($tipoPersona){
         $this->response['tipoPersona'] = $tipoPersona;
         
-        return view("personas.create")
-                    ->with($this->response);
+        return view("personas.create")->with($this->response);
     }
 
     public function store(){                                 
@@ -60,37 +54,26 @@ class PersonasController extends Controller
         try{
             $datos_persona = Input::get();
             $tipoPersona = Input::get('tipoPersona','');
-            $instanciaTipoPersona = setModelTipoPersona($tipoPersona);
+            $this->personasrepo = setModelTipoPersona($this->personasrepo, $tipoPersona);
 
-            if( $instanciaTipoPersona != '' ){
-                $instanciaTipoPersona->fill($datos_persona);
-                if( !$instanciaTipoPersona->validate(true) ){
-                    return Redirect::back()
-                                ->withErrors($instanciaTipoPersona->errors)
-                                ->withInput();
-                }
-                if( $instanciaTipoPersona->save() ){
-                    DB::commit();
-                    $response['mensaje']    =   'Se guardaron los datos correctamente';
-                    $response['error']      =   false;
-                } else {
-                    DB::rollBack();
-                    $response['mensaje']    =   'No se pudo guardar los datos de la persona';
-                    $response['error']      =   true;
-                }
+            $crearPersona = $this->personasrepo->create($datos_persona);
+
+            if( $crearPersona ){
+                DB::commit();
+                $this->response['mensaje']  =   'Se guardaron los datos correctamente';
+                $this->response['error']    =   false;
             } else {
                 DB::rollBack();
-                $response['mensaje']    =   'Error al instanciar el tipo de persona';
-                $response['error']      =   true;
+                $this->response['mensaje']  =   'No se pudo guardar los datos de la persona';
+                $this->response['error']    =   true;
             }
         } catch (Exception $ex) {
             DB::rollBack();
-            $response['mensaje']    =   'Error al guardar';
-            $response['error']      =   true;
+            $this->response['mensaje']    =   'Error al guardar: '.$ex;
+            $this->response['error']      =   true;
         }
 
-        return Redirect::route('personas.listado', [$tipoPersona])
-                    ->with($response);
+        return Redirect::route('personas.listado', [$tipoPersona])->with($this->response);
     }
 
     public function edit($tipoPersona,$id){
@@ -98,8 +81,7 @@ class PersonasController extends Controller
         $this->response['tipoPersona'] = $tipoPersona;
         $this->response['persona'] = $this->personasrepo->find($id);
         
-        return view('personas.edit')
-                    ->with($this->response);
+        return view('personas.edit')->with($this->response);
     }
 
     public function update(Request $request, $id){
@@ -109,6 +91,5 @@ class PersonasController extends Controller
         return Redirect::route('personas.listado', [$request->tipoPersona]);
     }
 
-    
 
 }
