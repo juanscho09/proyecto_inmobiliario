@@ -15,7 +15,7 @@ class ConfigServiciosSeeder extends Seeder
 
         //insert some dummy records
         DB::table('configuraciones_servicios')->insert([
-            ['titulo'=>'Gas','descripcion'=>'-', 'valor' => 0],
+            ['titulo'=>'Gas','descripcion'=>'Pago bimestral', 'valor' => 0, 'plazo_pago' => 2],
             ['titulo'=>'Luz','descripcion'=>'-', 'valor' => 0],
             ['titulo'=>'Teléfono','descripcion'=>'-', 'valor' => 0],
             ['titulo'=>'ABL','descripcion'=>'-', 'valor' => 0],

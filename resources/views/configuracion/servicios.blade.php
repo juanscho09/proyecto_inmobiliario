@@ -30,44 +30,55 @@
                 <div class="panel-body">
                     @if($servicios->count())
                         <div class="row">
-                            <div class="col-md-3">
-                                <strong class="text-center">Nombre servicio</strong>
-                            </div>
-                            <div class="col-md-5">
-                                <strong class="text-center">Descripción</strong>
-                            </div>
-                            <div class="col-md-2">
-                                <strong class="text-center">Valor mensual (0 varía)</strong>
-                            </div>
-                            <div class="col-md-2">
-                                <strong class="text-center">Acciones</strong>
+                            <div class="col-xs-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre servicio</th>
+                                                <th>Descripción</th>
+                                                <th>Valor mensual (0 varía)</th>
+                                                <th>Plazo de pago (en meses)</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($servicios as $servicio)
+                                                <tr>
+                                                    {!! Form::model($servicio,
+                                                        ['route' => ['configuracion.generales.update', $servicio->id], 'method' => 'PUT' ]) !!}
+
+                                                        <td>
+                                                            {{  Form::text( 'titulo', null,
+                                                                array('class' => 'form-control') ) }}
+                                                        </td>
+                                                        <td>
+                                                            {{  Form::text( 'descripcion', null,
+                                                                array('class' => 'form-control') ) }}
+                                                        </td>
+                                                        <td>
+                                                            {{  Form::text( 'valor', null,
+                                                                 array('class' => 'form-control') ) }}
+                                                        </td>
+                                                        <td>
+                                                            {{  Form::text( 'plazo_pago', null,
+                                                                 array('class' => 'form-control') ) }}
+                                                        </td>
+                                                        <td>
+                                                            {{ Form::submit('Actualizar', ['class' => 'btn btn-success btn-block btn-sm']) }}
+                                                        </td>
+                                                    {{ Form::close() }}
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        @foreach($servicios as $servicio)
 
-                            {!! Form::model($servicio,
-                                   ['route' => ['configuracion.generales.update', $servicio->id], 'method' => 'PUT' ]) !!}
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        {{  Form::text( 'titulo', null,
-                                            array('class' => 'form-control') ) }}
-                                    </div>
-                                    <div class="col-md-5">
-                                        {{  Form::text( 'descripcion', null,
-                                            array('class' => 'form-control') ) }}
-                                    </div>
-                                    <div class="col-md-2">
-                                        {{  Form::text( 'valor', null,
-                                             array('class' => 'form-control') ) }}
-                                    </div>
-                                    <div class="col-md-2">
-                                        {{ Form::submit('Actualizar', ['class' => 'btn btn-success btn-block btn-sm']) }}
-                                    </div>
-                                </div>
-                            <br>
 
-                            {{ Form::close() }}
-                        @endforeach
+
+
                     @else
                         <div class="alert alert-warning alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
