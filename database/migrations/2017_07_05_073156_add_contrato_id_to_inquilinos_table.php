@@ -12,10 +12,12 @@ class AddContratoIdToInquilinosTable extends Migration
      */
     public function up()
     {
-        Schema::table('inquilinos', function (Blueprint $table) {
-            $table->integer('contrato_id')->unsigned();
-            $table->foreign('contrato_id')->references('id')->on('contratos');
-        });
+        if( !Schema::hasColumn('inquilinos', 'contrato_id') ) {
+            Schema::table('inquilinos', function (Blueprint $table) {
+                $table->integer('contrato_id')->unsigned();
+                $table->foreign('contrato_id')->references('id')->on('contratos');
+            });
+        }
     }
 
     /**
@@ -25,9 +27,11 @@ class AddContratoIdToInquilinosTable extends Migration
      */
     public function down()
     {
-        Schema::table('inquilinos', function (Blueprint $table) {
-            $table->dropForeign('contrato_id');
-            $table->dropColumn('contrato_id');
-        });
+        if( !Schema::hasColumn('inquilinos', 'contrato_id') ) {
+            Schema::table('inquilinos', function (Blueprint $table) {
+                $table->dropForeign('contrato_id');
+                $table->dropColumn('contrato_id');
+            });
+        }
     }
 }
