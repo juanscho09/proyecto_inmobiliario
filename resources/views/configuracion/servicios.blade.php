@@ -16,7 +16,7 @@
     <li class="active treeview">
 @endsection
 
-@section('item_configuracion_servicios')
+@section('item_configuraciones_servicios')
     <li class="active">
 @endsection
 

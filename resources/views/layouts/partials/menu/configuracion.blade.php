@@ -11,7 +11,7 @@
                 <i class="fa fa-gears"></i>Configuraciónes generales
             </a>
         </li>
-        @yield("item_configuracion_servicios","<li>")
+        @yield("item_configuraciones_servicios","<li>")
             <a href="{{URL::route('configuracion.servicios', null)}}">
                 <i class="fa fa-gears"></i>Configuración Servicios
             </a>

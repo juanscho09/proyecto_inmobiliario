@@ -16,7 +16,7 @@
     <li class="active treeview">
 @endsection
 
-@section('item_configuracion_generales')
+@section('item_configuraciones_generales')
     <li class="active">
 @endsection
 
