@@ -93,10 +93,40 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::group(['prefix' => 'contratos'], function() {
 
-        Route::get('listado', [            
+        Route::get('listado', [
                 'as' => 'contratos.listado', 
                 'uses' => 'ContratosController@index'
             ]);
+
+        Route::get('/create', [
+            'as' => 'contratos.create',
+            'uses' => 'ContratosController@create'
+        ]);
+
+    });
+
+    Route::group(['prefix' => 'configuracion'], function() {
+
+        Route::get('generales', [
+                'as' => 'configuracion.generales',
+                'uses' => 'ConfiguracionController@generales'
+        ]);
+
+        Route::put('generales/{id}', [
+            'as' => 'configuracion.generales.update',
+            'uses' => 'ConfiguracionController@updateGenerales'
+        ]);
+
+        Route::get('servicios', [
+            'as' => 'configuracion.servicios',
+            'uses' => 'ConfiguracionController@servicios'
+        ]);
+
+        Route::put('servicios/{id}', [
+            'as' => 'configuracion.generales.update',
+            'uses' => 'ConfiguracionController@updateServicios'
+        ]);
+
     });
 
 });

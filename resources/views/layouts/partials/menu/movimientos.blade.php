@@ -2,14 +2,14 @@
 
 	<a href="#">
 		<i class="fa fa-retweet" aria-hidden="true"></i>
-		Movimientos 
+		Movimientos
 		<i class="fa fa-angle-left pull-right"></i>
 	</a>
     <ul class="treeview-menu">
         @yield("item_movimientos","<li>")
-            <a href="{{URL::route('movimientos.listado')}}">
+            <a href="{{URL::route('movimientos.listado', null)}}">
                 <i class="fa fa-edit"></i>Listado de Movimientos
             </a>
-        </li>   
+        </li>
     </ul>
 </li>

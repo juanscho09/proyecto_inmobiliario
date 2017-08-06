@@ -47,6 +47,7 @@
             @include("layouts.partials.menu.inmuebles")
             @include("layouts.partials.menu.movimientos")
             @include("layouts.partials.menu.contratos")
+            @include("layouts.partials.menu.configuracion")
 
 
         </ul><!-- /.sidebar-menu -->

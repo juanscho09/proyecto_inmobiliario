@@ -103,7 +103,7 @@
                                         @if($inmuebles->links())
                                         <div class="well">
                                           <div class="text-center">
-                                            {!! $inmuebles->links(); !!}
+                                            {!! $inmuebles->links() !!}
                                           </div>
                                         </div>                
                                         @endif                

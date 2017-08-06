@@ -59,6 +59,7 @@ desired effect
 @show
 
 @section('sectionScripts')
+
 @show
 
 </body>
