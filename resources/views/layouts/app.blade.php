@@ -59,7 +59,7 @@ desired effect
 @show
 
 @section('sectionScripts')
-    @yield('scripts')
+
 @show
 
 </body>
