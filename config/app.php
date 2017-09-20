@@ -78,6 +78,8 @@ return [
     |
     */
 
+    'faker_locale' => 'es_AR', 
+
     'fallback_locale' => 'en',
 
     /*

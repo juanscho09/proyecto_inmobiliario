@@ -103,6 +103,11 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'ContratosController@create'
         ]);
 
+        Route::post('/', [
+            'as' => 'contratos.store',
+            'uses' => 'ContratosController@store'
+        ]);
+
     });
 
     Route::group(['prefix' => 'configuracion'], function() {

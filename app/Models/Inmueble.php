@@ -35,7 +35,7 @@ class Inmueble extends Modelo{
 
     public function propietarios()
     {
-        return $this->belongsToMany('App\Models\Propietario');
+        return $this->belongsToMany(Propietario::class);
     }
 
     public function inquilino()
